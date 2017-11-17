@@ -1,0 +1,2 @@
+aws s3 cp s3://<%= node['TrendMicro']['bucket_name'] %>/<%= node['TrendMicro']['file_name'] %> /var/lib/tomcat7/webapps/<%= node['TrendMicro']['file_name'] %> 
+chmod +x /var/lib/tomcat7/webapps/<%= node['TrendMicro']['file_name'] %>
