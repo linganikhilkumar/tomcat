@@ -25,7 +25,7 @@ service 'tomcat7' do
 end
 
 template "/tmp/aws.sh" do 
-  source "manager.erb" 
+  source "copy.erb" 
   owner "root" 
   group "root" 
   mode "0644" 
