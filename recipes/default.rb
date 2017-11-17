@@ -7,22 +7,35 @@
 include_recipe 'java'
 
 execute 'update' do
-	command 'sudo apt-get update' 
+	command 'apt-get update' 
 end
 execute 'install-python' do
-        command 'sudo apt-get install python2.7'
+        command 'apt-get install python2.7'
 end
 execute 'install-pip' do
-        command 'sudo python2.7 get-pip.py'
+        command 'python2.7 get-pip.py'
 end
 execute 'install-awscli' do
-        command 'sudo pip install awscli'
+        command 'pip install awscli'
 end
-
 package 'tomcat7'
 
 service 'tomcat7' do
         action:start
+end
+
+template "/tmp/aws.sh" do 
+  source "manager.erb" 
+  owner "root" 
+  group "root" 
+  mode "0644" 
+end
+
+execute 'sh /tmp/aws.sh' do
+ command 'sh /tmp/aws.sh'
+end
+service 'tomcat7' do
+        action:restart
 end
 
 
